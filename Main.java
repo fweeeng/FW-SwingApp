@@ -15,7 +15,6 @@ class Main
     //frame1.setVisible(true);
     //
     ArrayList<String> groceries = new ArrayList<>();
-    ListIterator iter8 = groceries.listIterator();
 
 
     //-------Panel 1 for textfields--------
@@ -78,6 +77,22 @@ class Main
         haveItemName.setText("");
       }
     });
+
+    //--------Button4-printList-------
+    JButton printList = new JButton("Print current list");
+    printList.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        ListIterator iter8 = groceries.listIterator();
+        System.out.println("Grocery List: ");
+        while(iter8.hasNext())
+        {
+          System.out.println(iter8.next());
+          //list.setText("Grocery List: " + iter8.next());
+        }
+      }
+    });
     
     panel2.add(shareTipBttn);//button1
 
@@ -88,6 +103,7 @@ class Main
 
     panel1.add(haveItemName);//textfield2
     panel1.add(removeItem);//button3
+    panel2.add(printList);//button4
     panel1.add(list);//label3
 
 

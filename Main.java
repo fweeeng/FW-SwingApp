@@ -61,7 +61,7 @@ class Main
         //add item to list
         groceries.add(needItemName.getText());
         System.out.println(groceries);
-        needItemName.setText("");
+        needItemName.setText("");//clears text field1
       }
     });
 
@@ -74,7 +74,7 @@ class Main
         //remove item
         groceries.remove(haveItemName.getText());
         System.out.println(groceries);
-        haveItemName.setText("");
+        haveItemName.setText("");//clears text field2
       }
     });
 
@@ -90,6 +90,7 @@ class Main
         {
           System.out.println(iter8.next());
           //list.setText("Grocery List: " + iter8.next());
+          //^attempt to print list in the frame
         }
       }
     });
@@ -110,8 +111,6 @@ class Main
     frame1.setVisible(true);
     frame1.getContentPane().add(BorderLayout.CENTER,panel1);
     frame1.getContentPane().add(BorderLayout.WEST,panel2);
-    
-    //JPanel panel2 = new JPanel(new BorderLayout(10,10));
 
   }//end main method
 

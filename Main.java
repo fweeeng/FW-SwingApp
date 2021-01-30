@@ -9,79 +9,77 @@ class Main
   public static void main(String[] args) 
   {
     //
-    JFrame frame1 = new JFrame("JFrame here");
+    JFrame frame1 = new JFrame("Grocery List & Tips");
     frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //MUST HAVE THIS LINE
-    frame1.setSize(500,500);
+    frame1.setSize(800,800);
     //frame1.setVisible(true);
     //
 
-    //-------Panel 1 to hold buttons--------
-    JPanel panel1 = new JPanel(new GridLayout(7,2,10,5));
-    //-------Panel 2--------
-    JPanel panel2 = new JPanel(new GridLayout(7,2,5,5));
-    //-------Panel 3--------
-    JPanel panel3 = new JPanel(new BorderLayout(1,1));
+    //-------Panel 1 for textfields--------
+    JPanel panel1 = new JPanel(new GridLayout(15,2,10,5));
+    //-------Panel 2 for shareTipBttn--------
+    JPanel panel2 = new JPanel(new GridLayout(5,5,5,5));
 
-    //-------Label1--------
-    JLabel label1 = new JLabel("label");
+    //-------Label1-Start/Prompt--------
+    JLabel randTip = new JLabel("<-- Get a tip for grocery shopping");
 
     //-------Label2--------
-    JLabel label2 = new JLabel("label2");
+    JLabel label2 = new JLabel("Add another tip to save for future shopping trips:");
 
-    //-------Textfield1------
-    JTextField textField1 = new JTextField(10);
+    //-------Label3-List------
+    JLabel list = new JLabel("Grocery List: ");
 
-    //-------Textfield2------
-    JTextField textField2 = new JTextField(10);
+    //-------Textfield1-needItem------
+    JTextField needItem = new JTextField(10);
 
-    //-------Button1--------
-    JButton startButton = new JButton("Start");
-    startButton.addActionListener(new ActionListener()
+    //-------Textfield2-newTip------
+    JTextField newTip = new JTextField(10);
+
+    //-------Button1-shareTipBttn-------
+    ImageIcon cartIcon = new ImageIcon("cartIcon.png", "cart");
+    JButton shareTipBttn = new JButton(cartIcon);
+    shareTipBttn.addActionListener(new ActionListener()
     {
       public void actionPerformed(ActionEvent e)
       {
-        System.out.println("Start the charade!");
+        //share tip - change label1 to random tip
+        System.out.println("Share tip");
       }//what the button will do
 
     });//end of ActionListener
 
-    //-------Button2---------
-    JButton button2 = new JButton("Button2");
-    button2.addActionListener(new ActionListener()
+    //-------Button2-addNeedItem--------
+    JButton addNeedItem = new JButton("Add item");
+    addNeedItem.addActionListener(new ActionListener()
     {
       public void actionPerformed(ActionEvent e)
       {
-        System.out.println("This is button2.");
+        //add item to list
+        System.out.println("Add item");
       }
     });
-    //frame1.add(startButton);
 
-    //--------Button3--------
-    JButton button3 = new JButton("Button3");
-    button3.addActionListener(new ActionListener()
+    //--------Button3-addTip-------
+    JButton addTip = new JButton("Add new tip");
+    addTip.addActionListener(new ActionListener()
     {
       public void actionPerformed(ActionEvent e)
       {
-        System.out.println("This is button3.");
+        //add a tip
+        System.out.println("Add a tip");
       }
     });
+    
+    panel2.add(shareTipBttn);//button1
 
-    //=========Image 1========
-    ImageIcon busImg = new ImageIcon("magicSchoolBus2.jpg", "The Magic School Bus!");
-    JLabel magicBusPic = new JLabel(busImg);
+    panel1.add(randTip);//label1
+    panel1.add(needItem);//textfield1
+    panel1.add(addNeedItem);//button2
+    panel1.add(label2);//label2
 
-    panel2.add(startButton);
-
-    panel1.add(label1);
-    panel1.add(textField1);
-    panel1.add(button2);
-
-    panel1.add(textField2);
-    panel1.add(button3);
-    panel1.add(label2);
-    panel3.add(magicBusPic);
-
-    //panel3.add(PIC);
+    panel1.add(newTip);//textfield2
+    panel1.add(addTip);//button3
+    panel1.add(list);//label3
 
 
     frame1.setVisible(true);

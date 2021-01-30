@@ -1,8 +1,8 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-//import java.util.ArrayList;
-//import java.util.ListIterator;
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 class Main 
 {
@@ -14,9 +14,13 @@ class Main
     frame1.setSize(800,800);
     //frame1.setVisible(true);
     //
+    ArrayList<String> groceries = new ArrayList<>();
+    ListIterator iter8 = groceries.listIterator();
+
 
     //-------Panel 1 for textfields--------
     JPanel panel1 = new JPanel(new GridLayout(15,2,10,5));
+
     //-------Panel 2 for shareTipBttn--------
     JPanel panel2 = new JPanel(new GridLayout(5,5,5,5));
 
@@ -24,16 +28,16 @@ class Main
     JLabel randTip = new JLabel("<-- Get a tip for grocery shopping");
 
     //-------Label2--------
-    JLabel label2 = new JLabel("Add another tip to save for future shopping trips:");
+    JLabel label2 = new JLabel("Remove an item once you have it in your cart:");
 
     //-------Label3-List------
     JLabel list = new JLabel("Grocery List: ");
 
-    //-------Textfield1-needItem------
-    JTextField needItem = new JTextField(10);
+    //-------Textfield1-needItemName------
+    JTextField needItemName = new JTextField(10);
 
-    //-------Textfield2-newTip------
-    JTextField newTip = new JTextField(10);
+    //-------Textfield2-haveItemName------
+    JTextField haveItemName = new JTextField(10);
 
     //-------Button1-shareTipBttn-------
     ImageIcon cartIcon = new ImageIcon("cartIcon.png", "cart");
@@ -42,8 +46,9 @@ class Main
     {
       public void actionPerformed(ActionEvent e)
       {
-        //share tip - change label1 to random tip
-        System.out.println("Share tip");
+        String[] tips = {"Always Shop with a List", "Never Shop on Sunday Afternoons", "Always Grab Meat and Dairy Items Last", "Always Grab Perishable Items from the Back of the Shelf"};
+        String rand = tips[(int)(Math.random()*tips.length)];
+        randTip.setText(rand);
       }//what the button will do
 
     });//end of ActionListener
@@ -55,37 +60,40 @@ class Main
       public void actionPerformed(ActionEvent e)
       {
         //add item to list
-        System.out.println("Add item");
+        groceries.add(needItemName.getText());
+        System.out.println(groceries);
+        needItemName.setText("");
       }
     });
 
-    //--------Button3-addTip-------
-    JButton addTip = new JButton("Add new tip");
-    addTip.addActionListener(new ActionListener()
+    //--------Button3-removeItem-------
+    JButton removeItem = new JButton("Remove item");
+    removeItem.addActionListener(new ActionListener()
     {
       public void actionPerformed(ActionEvent e)
       {
-        //add a tip
-        System.out.println("Add a tip");
+        //remove item
+        groceries.remove(haveItemName.getText());
+        System.out.println(groceries);
+        haveItemName.setText("");
       }
     });
     
     panel2.add(shareTipBttn);//button1
 
     panel1.add(randTip);//label1
-    panel1.add(needItem);//textfield1
+    panel1.add(needItemName);//textfield1
     panel1.add(addNeedItem);//button2
     panel1.add(label2);//label2
 
-    panel1.add(newTip);//textfield2
-    panel1.add(addTip);//button3
+    panel1.add(haveItemName);//textfield2
+    panel1.add(removeItem);//button3
     panel1.add(list);//label3
 
 
     frame1.setVisible(true);
     frame1.getContentPane().add(BorderLayout.CENTER,panel1);
     frame1.getContentPane().add(BorderLayout.WEST,panel2);
-    frame1.getContentPane().add(BorderLayout.SOUTH,panel3);
     
     //JPanel panel2 = new JPanel(new BorderLayout(10,10));
 
